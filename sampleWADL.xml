@@ -1,0 +1,94 @@
+<application xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:apigee="http://api.apigee.com/wadl/2010/07/"
+             xmlns="http://wadl.dev.java.net/2009/02"
+             xsi:schemaLocation="http://wadl.dev.java.net/2009/02 http://apigee.com/schemas/wadl-schema.xsd http://api.apigee.com/wadl/2010/07/ http://apigee.com/schemas/apigee-wadl-extensions.xsd">
+	
+	<resources base="https://api.example.com/v1">
+		<resource path="/deals">       
+			<param name="appid" required="true" type="xsd:string" style="query" default="abc123def456">
+				<doc>A unique identifier for the consuming application or website making the request.</doc>
+			</param>		
+			<method id="getDeals" name="GET" apigee:displayName="Get Deals">
+				<apigee:tags>
+					<apigee:tag primary="true">Deals</apigee:tag>
+				</apigee:tags>
+				<apigee:authentication required="false"/>
+				<apigee:example url="/deals" />
+				<doc apigee:url="http://dev.example.com/apis/getDeals.htm" title="Wired">
+					Use the GET method to get interesting, relevant, and/or recent deals submitted to a system, ordered by proximity.
+				</doc>
+				<request>
+					<param name="categoryids" type="xsd:string" style="query" default="446,452" required="false">
+						<doc>An optional, comma delimited list of categories by which to restrict results. Leave empty to search across all.</doc>
+					</param>				
+					<param name="lat" type="xsd:string" style="query" default="" required="true">
+						<doc>The latitude of where the request is being made from.</doc>
+					</param>
+					<param name="long" type="xsd:string" style="query" default="" required="true">
+						<doc>The longitude of where the request is being made from.</doc>
+					</param>
+					<param name="limit" type="xsd:unsignedShort" style="query" default="10" required="false">
+						<doc>The number of records to return of the resource type.</doc>
+					</param>					
+					<param name="offset" type="xsd:unsignedShort" style="query" default="0" required="false">
+						<doc>The number of records to skip over before returning the desired limit of resources.</doc>
+					</param>					
+				</request>
+			</method>
+		</resource>
+		<resource path="/deals/{dealid}/locations">       
+			<param name="appid" required="true" type="xsd:string" style="query" default="abc123def456">
+				<doc>A unique identifier for the consuming application or website making the request.</doc>
+			</param>
+			<method id="getDealLocations" name="GET" apigee:displayName="Get Deal Locations">
+				<apigee:tags>
+					<apigee:tag primary="true">Deals</apigee:tag>
+					<apigee:tag>Locations</apigee:tag>					
+				</apigee:tags>
+				<apigee:authentication required="false"/>
+				<apigee:example url="/deals/{dealid}/locations" />
+				<doc apigee:url="http://dev.example.com/apis/getDeals.htm" title="Wired">
+					Use the GET method get locations offering a deal, ordered by proximity.
+				</doc>
+				<request>
+					<param name="lat" type="xsd:string" style="query" default="" required="true">
+						<doc>The latitude of where the request is being made from.</doc>
+					</param>
+					<param name="long" type="xsd:string" style="query" default="" required="true">
+						<doc>The longitude of where the request is being made from.</doc>
+					</param>
+					<param name="limit" type="xsd:unsignedShort" style="query" default="10" required="false">
+						<doc>The number of records to return of the resource type.</doc>
+					</param>					
+					<param name="offset" type="xsd:unsignedShort" style="query" default="0" required="false">
+						<doc>The number of records to skip over before returning the desired limit of resources.</doc>
+					</param>					
+				</request>
+			</method>
+		</resource>
+		<resource path="/deals/{dealid}"> 
+			<param name="dealid" required="true" style="template" type="xsd:string">
+				<doc>A valid deal id that identifies a collection of items in a system.</doc>
+			</param>			
+			<method id="getDeal" name="GET" apigee:displayName="Get Deal">
+				<apigee:tags>
+					<apigee:tag primary="true">Deals</apigee:tag>
+				</apigee:tags>
+				<apigee:authentication required="false"/>
+				<apigee:example url="/deals/{dealid}" />
+				<doc apigee:url="http://dev.example.com/apis/getDeals.htm" title="Wired" >
+					Use the GET method to get a specific deal.
+				</doc>
+				<request>
+					<param name="limit" type="xsd:unsignedShort" style="query" default="10" required="false">
+						<doc>The number of records to return of the resource type.</doc>
+					</param>					
+					<param name="offset" type="xsd:unsignedShort" style="query" default="0" required="false">
+						<doc>The number of records to skip over before returning the desired limit of resources.</doc>
+					</param>					
+				</request>
+			</method>
+		</resource>
+	</resources>
+</application>
