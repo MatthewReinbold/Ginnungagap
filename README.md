@@ -6,6 +6,8 @@ A simple CFML application to create an API status dashboard from a WADL API desc
 ## Introduction
 Considering how unfashionable *CFML*, *WADL*, and *XML* are these days I'm not sure how many people will be interested in a tool like this. However, I recently had to  coordinate a number of internal and remote developers under extreme time table duress. In that situation I found being able to direct people to a clear, concise page demonstrating what **was** and what **was not** ready to be extremely beneficial.
 
+![Sample screenshot from said recent project.](https://github.com/MatthewReinbold/Ginnungagap/raw/master/ginnungagapSampleImage.png "Sample Image")
+
 ## Compatibility
 Ginnungagap should be backwards compatible with *ColdFusion 8*, *Railo 3.2* (free!), and *OpenBD
 1.1* (free!). It may even work with previous versions but I have not tested on those. Your mileage may vary.
